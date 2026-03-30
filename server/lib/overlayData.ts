@@ -112,7 +112,9 @@ async function getRecentMatches(
 
     return {
       agent: me.agent,
-      date: match.metadata?.started_at ? new Date(match.metadata.started_at).toDateString() : "Unknown Date",
+      date: match.metadata?.started_at
+        ? new Date(match.metadata.started_at).toDateString()
+        : "Unknown Date",
       isWin,
     };
   });
