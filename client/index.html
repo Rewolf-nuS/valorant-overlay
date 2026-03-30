@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>VALORANT Overlay</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="state_panel error">
+        <span class="error_icon">⚠</span>
+        <span class="state_text"
+          >URLに ?region=xxx&name=yyy&tag=zzz を付けてください</span
+        >
+      </div>
+      <div class="rank_block">
+        <img
+          id="rankImage"
+          alt=""
+          src="https://media.valorant-api.com/competitivetiers/564d8e28-c226-3180-6285-e48a390db8b1/0/smallicon.png"
+        />
+        <div class="rank_info_wrapper">
+          <div class="rank_info">
+            <span id="rank">Unranked</span>
+            <span id="rr">0 RR</span>
+          </div>
+          <span class="win_lose_title">直近10戦</span>
+          <div class="win_lose_info">
+            <span id="win">0勝</span>
+            <span id="lose">0敗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="./valorant-overlay.js"></script>
+</html>

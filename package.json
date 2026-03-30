@@ -1,0 +1,21 @@
+{
+  "name": "valorant_overlay",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --hot server/index.ts",
+    "start": "bun run server/index.ts",
+    "build": "bun run build:client && bun build server/index.ts --compile --outfile ./dist/valorant_overlay && ./build.bat",
+    "build:client": "bun build ./client/valorant-overlay.ts --minify --outfile ./client/valorant-overlay.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "hono": "^4.12.9"
+  }
+}

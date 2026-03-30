@@ -1,0 +1,87 @@
+/************************/
+/* ユーザスタイルシート */
+/************************/
+
+:root {
+  --panel-bg: #1e1e1e;
+  --red: #ff4654;
+  --border: #333;
+  --text-color: aliceblue;
+  --bg-url: url("./bg.jpg");
+}
+
+body {
+  font-size: 3rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.state_panel {
+  padding: 0.5rem 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+}
+
+.state_panel.error {
+  display: none;
+
+  background: var(--panel-bg);
+  border-left: 9px solid var(--red);
+}
+
+.state_panel.error > * {
+  color: var(--red);
+}
+
+.state_panel.error.visible {
+  display: flex;
+}
+
+.rank_block {
+  position: relative;
+  padding: 0.6rem 5rem 0.6rem 2.25rem;
+  background-image: var(--bg-url);
+  background-size: cover;
+  width: fit-content;
+  min-height: 14rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 2.4rem;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.rank_block::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background-color: oklch(0% 0 0 / 0.5);
+  border-radius: 2.4rem;
+}
+
+.rank_block > * {
+  z-index: 3;
+}
+
+.rank_block img {
+  width: 9rem;
+}
+
+.rank_info {
+  display: flex;
+  gap: 1.5rem;
+  line-height: 1;
+}
+
+.win_lose_title {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.win_lose_info {
+  display: flex;
+  gap: 1.5rem;
+  line-height: 1;
+}
