@@ -1,47 +1,49 @@
 # VALORANT Overlay
 
-## 概要
+This is a customizable overlay that displays rank and win/loss count via OBS browser source.
 
-これは、OBSにブラウザソース経由でランクや勝敗数を表示できる\
-カスタマイズ可能なオーバーレイです。
+## Requirements
 
-## 要件
-
-- [bun](https://bun.com/)（パッケージ管理およびビルド・実行環境）
+- Windows 10 or later
+- [bun](https://bun.com/)（Package management, build, and execution environment）
 - [HENRIKDEV](https://docs.henrikdev.xyz/)（VALORANT API）
 
-### ライブラリ
+### Libraries
 
-- [hono](https://hono.dev/)（Webサーバー・APIエンドポイント作成）
+- [hono](https://hono.dev/)（Web server and API endpoint creation）
 
-## インストール
+## Installation
 
 ```powershell
-bun install     # 依存関係のインストール
-bun run build   # 生成物はdistディレクトリへ
+# Current directory: ~/valorant_overlay_exe
+bun install     # Install dependencies
+bun run build   # Generated files are in the dist directory
 ```
 
-## 実行方法
+## How to Run
 
-ビルドで生成された `valorant_overlay.exe` を実行するか、\
-開発時のプレビューには以下を使用し、サーバーを起動させる。
+Run the generated `valorant_overlay.exe` or use the following command to start the server for development preview.
 
 ```powershell
+# Current directory: ~/valorant_overlay_exe
 bun run dev
 ```
 
-起動後、OBSのブラウザソースのURLに\
-`http://localhost:8888/?region=<REGION>&name=<NAME>&tag=<TAG>&platform=<PLATFORM>`\
-を指定する。
+After starting, specify the URL in the OBS browser source as\
+`http://localhost:8888/?region=<REGION>&name=<NAME>&tag=<TAG>&platform=<PLATFORM>`
 
-### パラメータについて
+### Parameters
 
-・REGION（プレイリージョン）※必須\
-　使用可能な値：eu, na, latam, br, ap, kr
+・REGION（Play Region）※required\
+Available values: eu, na, latam, br, ap, kr
 
-・NAME（Riot ID）※必須
+・NAME（Riot ID）※required
 
-・TAG（#から始まるタグ）※必須
+・TAG（The tag starts with #）※required
 
-・PLATFORM ※任意\
-　使用可能な値：pc, console
+・PLATFORM ※optional\
+Available values: pc, console
+
+## License
+
+This project is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
