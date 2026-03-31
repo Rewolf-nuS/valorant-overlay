@@ -3,9 +3,7 @@ node_modules
 
 # output
 out
-dist/.env
-dist/valorant_overlay.exe
-dist/client/*
+dist
 *.tgz
 
 # code coverage
@@ -36,6 +34,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .DS_Store
 
 client/bg.jpg
-client/valorant_overlay.js
+client/valorant-overlay.js
 
 .vscode
