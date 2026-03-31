@@ -70,7 +70,7 @@ bun run dev
 
 To change the look and feel, edit the files in `dist/client/`.
 
-- **Background Image**: Replace `dist/client/bg.png` with your desired image (PNG format).
+- **Background Image**: Replace `dist/client/bg.jpg` with your desired image (JPEG format).
 - **Styles (CSS)**: Edit `dist/client/style.css` to change colors or filter opacity.
   - `--text-color`: Text color
   - `--bg-url`: Background image path or URL

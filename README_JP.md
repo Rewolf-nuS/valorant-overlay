@@ -69,7 +69,7 @@ bun run dev
 
 見た目を変更したい場合は、`dist/client/` 内のファイルを編集します。
 
-- **背景画像**: `dist/client/bg.png` を好きな画像（PNG形式）に置き換えてください。
+- **背景画像**: `dist/client/bg.jpg` を好きな画像（JPEG形式）に置き換えてください。
 - **スタイル (CSS)**: `dist/client/style.css` を編集して、文字色やフィルターの透明度を変更できます。
   - `--text-color`: テキストの色
   - `--bg-url`: 背景画像のパス（またはURL）
