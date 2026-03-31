@@ -49,8 +49,15 @@ async function getCurrentRank(
   }
 
   const data: MMRResponse = await res.json();
+  if (!data.data) {
+    throw new Error("MMRデータが見つかりませんでした");
+  }
   const currentRank = data.data.current;
-  return { tier: currentRank.tier.name, rr: currentRank.rr };
+  const currentTier = currentRank?.tier;
+  if (!currentRank || !currentTier) {
+    throw new Error("MMRデータが見つかりませんでした");
+  }
+  return { tier: currentTier.name, rr: currentRank.rr };
 }
 
 // ----------------------------------------------------------------
@@ -82,9 +89,12 @@ async function getRecentMatches(
   }
 
   const parsed: RecentMatchesResponse = await res.json();
+  if (!parsed.data) {
+    throw new Error("マッチデータが見つかりませんでした");
+  }
   const matches: MatchData[] = parsed.data;
   const myMatchesInfo = matches.map((match) => {
-    const me = match.players.find(
+    const me = match.players?.find(
       (player) => player.name === name && player.tag === tag,
     );
 
@@ -94,7 +104,7 @@ async function getRecentMatches(
       );
     }
     const myTeam = me.team_id;
-    const isWin = match.teams.find((team) => team.team_id === myTeam)?.won;
+    const isWin = match.teams?.find((team) => team.team_id === myTeam)?.won;
 
     if (isWin === undefined) {
       throw new Error("勝敗データが見つかりません");
@@ -102,7 +112,7 @@ async function getRecentMatches(
 
     return {
       agent: me.agent,
-      date: new Date(match.metadata.started_at).toDateString(),
+      date: match.metadata?.started_at ? new Date(match.metadata.started_at).toDateString() : "Unknown Date",
       isWin,
     };
   });
@@ -148,7 +158,10 @@ export async function fetchOverlayData(
     getRecentMatches(region, name, tag, apiKey, platform),
   ]);
 
-  const imageUrl = await getRankImageUrl(currentRank.tier.toUpperCase());
+  let imageUrl = "";
+  if (currentRank.tier) {
+    imageUrl = await getRankImageUrl(currentRank.tier.toUpperCase());
+  }
 
   return {
     region,
