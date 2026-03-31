@@ -72,23 +72,23 @@ async function getRecentMatches(
 ) {
   const path = `/valorant/v4/matches/${region}/${platform}/${name}/${tag}?mode=competitive&size=${MATCH_SIZE}`;
 
-  const res = await fetch(`${HENRIKDEV_API_BASE_URL}${path}`, {
+  const response = await fetch(`${HENRIKDEV_API_BASE_URL}${path}`, {
     headers: {
       Authorization: apiKey,
     },
   });
 
-  if (!res.ok) {
-    if (res.status === 404) {
+  if (!response.ok) {
+    if (response.status === 404) {
       throw new Error("アカウントまたはマッチデータが見つかりませんでした");
     }
-    const body = await res.text();
+    const body = await response.text();
     throw new Error(
-      `Fetching recent matches data failed ${res.status} - ${body.slice(0, ERROR_MESSAGE_LENGTH)}`,
+      `Fetching recent matches data failed ${response.status} - ${body.slice(0, ERROR_MESSAGE_LENGTH)}`,
     );
   }
 
-  const parsed: RecentMatchesResponse = await res.json();
+  const parsed: RecentMatchesResponse = await response.json();
   if (!parsed.data) {
     throw new Error("マッチデータが見つかりませんでした");
   }
