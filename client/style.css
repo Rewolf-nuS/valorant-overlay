@@ -8,6 +8,7 @@
   --border: #333;
   --text-color: aliceblue;
   --bg-url: url("./bg.jpg");
+  --bg-filter: 0.5;
 }
 
 body {
@@ -24,7 +25,6 @@ body {
 
 .state_panel.error {
   display: none;
-
   background: var(--panel-bg);
   border-left: 9px solid var(--red);
 }
@@ -57,7 +57,7 @@ body {
   position: absolute;
   z-index: 2;
   inset: 0;
-  background-color: oklch(0% 0 0 / 0.5);
+  background-color: oklch(0% 0 0 / var(--bg-filter));
   border-radius: 2.4rem;
 }
 
@@ -69,19 +69,21 @@ body {
   width: 9rem;
 }
 
+.rank_info_wrapper {
+  line-height: 1;
+}
+
 .rank_info {
   display: flex;
   gap: 1.5rem;
-  line-height: 1;
 }
 
 .win_lose_title {
   font-size: 1.5rem;
-  line-height: 1;
 }
 
 .win_lose_info {
   display: flex;
   gap: 1.5rem;
-  line-height: 1;
+  margin-top: 0.5rem;
 }
